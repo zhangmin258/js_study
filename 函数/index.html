@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+	
+		<script>
+
+			//函数的声明方式有3种；
+			
+			//普通函数声明
+			// function box(num1,num2){
+			// 	return num1 + num2;
+			// }
+
+			// alert(box(1,2));   //3
+
+
+			//用变量来声明函数
+			// var box = function(num1,num2){
+			// 	return num1 + num2;
+			// }
+			// alert(box(1,2));
+
+
+			//函数的返回值可以当做参数来传递(函数也可以当做参数来传递)
+			// function box(sum,num){
+			// 	return sum + num;
+			// }
+
+			// function sum(num){
+			// 	return num + 10;
+			// }
+
+			// var result = box(sum(10),10);
+			// alert(result);   //30
+
+
+
+			//arguments.callee,调用函数自身
+			// function box(num){
+			// 	if(num <= 1){
+			// 		return 1;
+			// 	}else{
+			// 		return num * arguments.callee(num - 1);
+			// 	}
+			// }
+			// alert(box(5));
+			
+			//this作用域
+			// var color = '红色的';
+
+			// var box = {
+			// 	color: '蓝色的',
+			// 	sayColor: function(){
+			// 		alert(this.color);   //蓝色的
+			// 	}
+			// }
+
+			// alert(this.color);  //红色的
+			// box.sayColor();
+
+
+
+
+			//apply和call的区别(主要的目的是通过冒充，替换改变原来this的作用域,使用的好处为对象与方法不需要发生任何耦合的关系)
+			
+			var color ='红色的';   //this代表全局作用域
+
+			var box = {
+				color: '蓝色的',
+			}
+
+			function sayColor(){
+				alert(this.color);  //this的作用域视情况而定
+			}
+
+			// alert(this.color);  //红色的
+			// sayColor();   //红色的
+
+			// sayColor.call(this);  //红色的   this为全局作用域
+
+			sayColor.call(box);  //蓝色的  this为box下面的作用域
+
+			
+
+			//apply
+			// function num(num1,num2){
+			// 	return num1 + num2;
+			// }
+
+			// function sum(num1,num2){
+			// 	return num.apply(this,[num1,num2]);  //this表示num在window下的作用域，[num1,num2]表示要传递的参数,如果要传递的参数较多，可以用arguments来代替
+			// }
+			
+
+			// function sum(num1,num2){
+			// 	return num.apply(this,arguments);
+			// }
+
+			// alert(sum(10,10));  //20
+
+
+
+			//call (call与apply用法基本相同，只是后面传递参数的方式不一样)
+			// function num(num1,num2){
+			// 	return num1 + num2;
+			// }
+
+			// function sum(num1,num2){
+			// 	return num.call(this,num1,num2);
+			// }
+
+			// alert(sum(10,10));
+
+
+
+
+
+
+
+		</script>
+</body>
+</html>

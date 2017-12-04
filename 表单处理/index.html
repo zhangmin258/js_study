@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单处理</title>
+	<script type="text/javascript" src="base.js"></script>
+</head>
+
+<body>
+		
+	<form action="" id="myForm" name="yourForm">
+		姓名：<input type="text" name="user"><br>
+		<textarea name="content"></textarea><br>
+		<input type="submit" value="提交">
+	</form>
+
+
+		
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+addEvent(window,'load',function(){
+	var fm = document.getElementById('myForm');
+	var user = fm.elements['user'];
+	var content = fm.elements['content'];
+
+	//屏蔽非数字键的输入
+	addEvent(content,'keypress',function(e){
+		var e = e || window.event;
+		var charCode = getCharCode(e);
+		// alert(charCode);
+		//用正则表达式来验证输入的文本是否为数字，如果不是数字就屏蔽掉
+		if(!/\d/.test(String.fromCharCode(charCode)) && charCode > 0){
+			preDef(e);
+		}
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//阻止提交
+	// addEvent(fm,'submit',function(e){
+	// 	preDef(e);
+	// });
+	
+	//按回车键实现提交功能
+	// addEvent(document,'keyup',function(e){
+	// 	var e = e || window.event;
+	// 	if(e.keyCode == 13){
+	// 		fm.submit();
+	// 	}
+	// });
+
+
+
+
+
+
+
+
+});
+
+
+</script>
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+

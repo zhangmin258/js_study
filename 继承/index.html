@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承</title>
+	
+</head>
+<style type="text/css">
+
+
+
+</style>
+<body>
+	
+	<script>
+
+		
+	//原型链继承
+	// function Box(){
+	// 	// this.name = 'Lee';
+	// }
+
+	// Box.prototype.name = 'Jack';
+
+	// function Desk(){
+	// 	this.age = 30;
+	// }
+
+	// function Table(){
+	// 	this.msg = '我是一只小小鸟';
+	// }
+
+	// Desk.prototype = new Box();  //Desk可以继承Box所有的属性
+	// Table.prototype = new Desk();
+
+	// var desk = new Desk();
+	// var table = new Table();
+	// alert(table.msg);   //我是一只小小鸟
+	// alert(table.age);   //30
+	// alert(table.name);     //Lee  就近原则，如果构造函数里面有，就取构造函数里面的，如果没有，就取原型里面的
+
+	// alert(desk.age);   //30
+	// alert(desk.name);   //Lee
+
+	// alert(desk.msg);   //undefined  因为是Table继承了Desk,而并非Desk继承Table
+	
+
+
+
+
+
+	
+
+	//使用对象冒充继承
+	// function Box(name,age){
+	// 	this.name = name;
+	// 	this.age = age;
+	// }
+
+	// Box.prototype.family = '家庭';
+	// Box.prototype.run = function(){
+	// 	return this.name + this.age + '运行中...';
+	// }
+
+
+	// //this代表对象Desk,用call去冒充Box对象,注意：对象冒充只能继承构造函数里面的属性和方法，而不能继承原型里面的属性和方法，如果想要继承原型里面的属性和方法，那么就必须使用组合模式(对象冒充继承和原型继承),双管齐下，才能实现
+	// function Desk(name,age){
+	// 	Box.call(this,name,age); //对象冒充继承
+	// }
+
+	// Desk.prototype = new Box();  //原型继承
+
+	// var desk = new Desk('Lee',25);
+	// alert(desk.name);   //Lee
+	// alert(desk.family);   //家庭
+	// alert(desk.run());   //Lee25运行中...
+
+
+
+
+	//原型式继承
+	//临时中转函数
+	function obj(o){   //o表示要传入的一个对象
+		function F(){};  //F构造函数是临时新建的一个对象，用来储存传递过来的对象
+		F.prototype = o;  //将o对象实例赋值给F构造函数的原型对象
+		return new F();   //最后返回这个得到传递过来的对象的对象实例
+	}
+
+	var box = {
+		 name: 'Lee',
+		 age: 100,
+		 family: ['哥哥','姐姐','妹妹']
+	}
+
+
+	var box1 = obj(box);
+	// alert(box1.name);
+	// alert(box1.family);   //哥哥,姐姐,妹妹
+
+	box1.family.push('弟弟');
+	alert(box1.family);  //哥哥,姐姐,妹妹,弟弟
+
+	var box2 = obj(box);
+	alert(box2.family);   //哥哥,姐姐,妹妹,弟弟   引用类型属性共享了，说明最后全部放到了原型里面了
+	
+
+
+
+
+
+
+
+
+	</script>
+
+
+	
+
+
+
+		
+</body>
+</html>

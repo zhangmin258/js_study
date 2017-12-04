@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>变量,作用域及内存</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<style type="text/css">
+
+
+
+</style>
+<body>
+	
+
+
+
+	
+
+
+
+		<script>
+
+		// var box = [1,2,3];
+		// alert(box instanceof Array);   //true
+
+		// var box2 = {};
+		// alert(box2 instanceof Object);   //true
+
+		// var box3 = /g/;
+		// alert(box3 instanceof RegExp);   //true
+
+
+
+		//作用域是从里一层层往外面找
+		var box = 'lee';
+		function getBox(){
+			var box = 'red';
+			return box;
+		}
+		alert(getBox());   //red
+
+
+		</script>
+</body>
+</html>

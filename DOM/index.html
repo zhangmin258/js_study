@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM</title>
+	
+</head>
+<style type="text/css">
+
+	table tr{
+		text-align: center;
+	}
+
+</style>
+<body>
+		
+	
+	<table width="500" border="1" cellspacing="0" cellpadding="0">
+
+		<caption>人员信息表</caption>
+		<thead>
+			<tr>
+				<th>序号</th>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>金额</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>张三</td>
+				<td>30</td>
+				<td>1000元</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>李四</td>
+				<td>20</td>
+				<td>800元</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>王五</td>
+				<td>25</td>
+				<td>1050元</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4">总结</td>
+			</tr>
+		</tfoot>
+
+	</table>
+
+	<div style="height: 50px;"></div>
+
+	<table></table>
+
+
+
+		
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+window.onload = function(){
+	//使用DOM来创建一个表格
+
+	var table = document.getElementsByTagName('table')[1];
+	table.width = 500;
+	table.border = 1;
+	table.setAttribute('cellspacing',0);
+	table.setAttribute('cellpadding',0);
+	var caption = document.createElement('caption');
+	table.appendChild(caption);
+	caption.innerHTML = '人员信息表';
+
+	
+}
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

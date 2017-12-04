@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件</title>
+	<style type="text/css">
+
+		.red{
+			background: red;
+		}
+
+		.blue{
+			background: blue;
+		}
+
+		.green{
+			background: green;
+		}
+
+	</style>
+	
+</head>
+
+<body>
+	<div id="box" style="width: 300px; height: 300px; border: red solid 1px" class="red">
+		<input type="button" value="按钮">
+	</div>
+	
+
+
+		
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+function box(){
+	alert(123);
+}
+
+window.onload = function(){
+	// var input = document.getElementsByTagName('input')[0];
+	// input.onclick = box;
+	
+	// document.onmouseup = function(e){
+	// 	var e = e || window.event;
+	// 	alert(e.button);
+	// }
+	
+
+
+	// document.onclick = function(e){
+	// 	var e = e || window.event;
+	// 	alert(e.clientX+','+e.clientY);
+	// }
+	
+
+	// document.onkeyup = function(e){
+	// 	var e = e || window.event;
+	// 	alert(e.keyCode);
+	// }
+
+	//事件流包括事件冒泡和事件捕获
+	//事件冒泡(从最里层到最外层)
+	
+	// document.onclick = function(){
+	// 	alert('documemt');
+	// }
+
+	// document.documentElement.onclick = function(){
+	// 	alert('html');
+	// }
+
+	// document.body.onclick = function(){
+	// 	alert('body');
+	// }
+
+	// document.getElementById('box').onclick = function(){
+	// 	alert('box');
+	// }
+
+	// document.getElementsByTagName('input')[0].onclick = function(e){
+	// 	var e = e || window.event;
+	// 	alert('input'); 
+	// 	// e.stopPropagation();   //取消冒泡(IE不兼容)
+	// 	e.cancelBubble = true;   //取消冒泡(都兼容)
+	// }
+	
+
+	//事件切换器
+	// var box = document.getElementById('box');
+	// box.onclick = toBlue;
+
+
+	// function toRed(){
+	// 	this.className = 'red';
+	// 	this.onclick = toBlue;
+	// }
+
+
+	// function toBlue(){
+	// 	this.className = 'blue';
+	// 	this.onclick = toRed;
+	// }
+
+
+}
+
+// window.onload = function(){
+// 	alert('Lee');
+// }
+
+// if(typeof window.onload == 'function'){
+// 	var saved = null;   //保存上一个事件对象
+// 	saved = window.onload;
+// }
+
+// window.onload = function(){
+// 	saved();    //执行上一个事件
+// 	alert('Mr.Lee');
+// }
+
+
+
+//W3C事件处理函数
+
+// var box = document.getElementById('box');
+
+// box.addEventListener('click',function(){
+// 	alert(1);
+// },false);
+
+// box.addEventListener('click',function(){
+// 	alert(2);
+// },false);
+
+
+
+//兼容添加事件
+function addEvent(obj,type,fn){
+	if(obj.addEventListener){
+		obj.addEventListener(type,fn,false);
+	}else if(obj.attachEvent){
+		obj.attachEvent('on'+type,fn);
+	}
+}
+
+//兼容删除事件
+function removeEvent(obj,type,fn){
+	if(obj.removeEventListener){
+		obj.removeEventListener(type,fn,false);
+	}else if(obj.detachEvent){
+		obj.detachEvent('on'+type,fn);
+	}
+}
+
+
+//事件目标对象
+function getTarget(e){
+	if(e.target){
+		return e.target;
+	}else if(window.evnet.srcElement){
+		return window.event.srcEvent;
+	}
+}
+
+
+//调用添加事件对象
+addEvent(window,'load',function(){
+	var box = document.getElementById('box');
+	addEvent(box,'click',toBlue);
+	// addEvent(box,'click',function(){
+	// 	alert('点击我就会变颜色哦！');
+	// });
+});
+
+
+function toRed(e){
+	var that = getTarget(e);
+	that.className = 'red';
+	addEvent(that,'click',toBlue);
+	removeEvent(that,'click',toRed);
+}
+
+
+function toBlue(e){
+	var that = getTarget(e);
+	that.className = 'blue';
+	addEvent(that,'click',toGreen);
+	removeEvent(that,'click',toBlue);
+}
+
+
+function toGreen(e){
+	var that = getTarget(e);
+	that.className = 'green';
+	addEvent(that,'click',toRed);
+	removeEvent(that,'click',toGreen);
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

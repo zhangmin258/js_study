@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>基本包装类型</title>
+	
+</head>
+<style type="text/css">
+
+
+
+</style>
+<body>
+	
+	<script>
+
+		// var str = 'abcdefg';
+		// alert(str.substring(2));  //cdefg  索引0开始，从第二个位置开始截取到末尾的字符串输出
+
+
+		//toString(); 数值转换成字符串
+		// var a = 1000;
+		// alert(typeof a.toString());   //string
+		// alert(a.toLocaleString());    //1,000    本地数据格式化
+		
+		//toFixed();  保留小数点几位，并四舍五入，并且转化成字符串
+		// var a = 1000.876;
+		// alert(a.toFixed(2));  //1000.88
+		// alert(typeof a.toFixed(2));  //string
+
+
+		var str = 'abcdefg';
+		// alert(str.charAt(1));  //b  根据字符的索引返回出某个字符串指定的字符
+		// alert(str.concat(' is a teacher'));  //将字符串的参数串联到调用该方法的参数    abcdefg is a teacher
+		// alert(str.slice(1,5));  //bcde   返回字符串1到5之间位置的字符串	
+		// alert(str.slice(2));  		//cdefg    索引0开始，从第二个位置开始截取到末尾的字符串输出
+		// alert(str.substring(2,3));   //c   slice()和substring()的用法相同
+
+		// alert(str.substr(1,5));  //bcdef   第一个参数为索引值，第二个参数为截取字符串的个数(返回字符串索引值从1开始的5个字符串)
+		// alert(str.substr(2));   //cdefg       索引0开始，从第二个位置开始截取到末尾的字符串输出
+
+
+		//PS: 当slice()、substring()和substr()他们只传一个参数(正)的时候，用法完全相同(索引0开始，从第几个位置开始截取到末尾的字符串输出)
+
+		// alert(str.slice(-2));  //fg  总字符串的长度为7+(-2)=5
+		// alert(str.substring(-2));  //abcdefg    如果参数为负数，就返回全部字符串
+		//alert(str.substr(-2));   //fg   用法同slice()相同
+		
+		//alert(str.slice(3,-2));   //de   同等于alert(str.slice(3,5));
+
+		// alert(str.substring(3,-2));   //abc      参数为负数的时候，直接取0，所以就变成了alert(str.substring(3,0))，如果第二个参数比第一个参数小，就转换成alert(str.substring(0,3))
+ 
+		// alert(str.substr(3,-2));   //为空  第二个参数为负数的时候，直接转0，就变成alert(str.substr(3,0))，所以意思为从索引为3的地方取0个字符串，所以取空
+		
+		alert(str.split(''));  //a,b,c,d,e,f,g       将字符串分割成数组
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		//查找字符串的索引
+		var str = 'abcdefgeeeeghjkleedfddeeddds';
+
+		// alert(str.indexOf());  //-1  如果没有找到对应的字符串，则返回-1
+		// alert(str.indexOf('a'));   //0   注意区分charAt()和indexOf()的用法
+
+		// 找出所有的e字符串的位置。并打印出来
+		var arr = [];
+		var pos = str.indexOf('e');   //找出第一个e在该字符串的位置
+		// alert(pos);    //4
+		while(pos > -1){
+			arr.push(pos);
+			pos = str.indexOf('e',pos+1);
+		}
+		// alert(arr);    //4,7,8,9,10,16,17,22,23
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+
+
+	
+
+
+
+		
+</body>
+</html>

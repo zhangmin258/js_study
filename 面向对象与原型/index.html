@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象与原型</title>
+	
+</head>
+<style type="text/css">
+
+
+
+</style>
+<body>
+	
+	<script>
+
+		
+	// var box = new Object();  //实例化一个对象
+	// box.name = 'lee';
+	// box.age = 100;
+	// box.run = function(){
+	// 	return this.name+this.age+'运行中...';
+	// }
+
+	// alert(box.run());
+		
+
+
+	//工厂模式
+	// function createObject(name,age){
+	// 	var obj = new Object();
+	// 	obj.name = name;
+	// 	obj.age = age;
+	// 	obj.run = function(){
+	// 		return this.name + this.age + '运行中...';
+	// 	}
+	// 	return obj;
+	// }
+	// var box1 = createObject('Lee',25);
+	// var box2 = createObject('Jack',30);
+	// alert(box1.run());
+	// alert(box2.run());
+
+
+	//构造函数
+	function Box(name,age){   
+		this.name = name;
+		this.age = age;
+		this.run = function(){
+			return this.name + this.age + '运行中...';
+		}
+	}
+
+	var box1 = new Box('Lee',25);   //实例化构造函数
+	var box2 = new Box('Jack',30);
+	// alert(box1.run());
+	// alert(box2.run());
+
+	// alert(box1.run == box2.run);   //false
+
+	//工厂模式和构造函数的区别：
+	//1):构造函数没有new Object，但是后台会自动声明var obj = new Object();
+	//2):构造函数的this就相当于obj;
+	//3):构造函数不需要返回对象引用，它是后台自动返回的；
+
+
+	//对象冒充(也可以认为这是一种继承)
+	// var o = new Object();
+	// Box.call(o,'zhangmin',27);
+	// alert(o.run());    //zhangmin27运行中...
+
+
+
+
+	//原型
+	function Box(){};   //创建一个构造函数
+	Box.prototype.name = 'Lee';
+	Box.prototype.age = 100;
+	Box.prototype.run = function(){
+		return this.name + this.age + '运行中...';
+	}
+	var box1 = new Box();
+	var box2 = new Box();
+	// alert(box1.run());   //Lee100运行中...
+	// alert(box1.run == box2.run);   //true
+	// alert(box1.__proto__);   //[object Object]   指向构造函数的原型属性
+	// alert(box1.constructor);   //function Box(){}   打印出这个构造函数
+
+
+	//采用字面量的方法创建原型函数
+	// function Box(){};    // 首先创建一个构造函数
+	// Box.prototype = {
+	// 	name: 'Lee',
+	// 	age: 30,
+	// 	run: function(){
+	// 		return this.name + this.age + '运行中...';
+	// 	}
+	// }
+
+	// var box1 = new Box();    //实例化这个构造函数
+	// alert(box1.run());    //Lee30运行中...
+	// alert(box1.constructor);    //function Object() { [native code] }
+
+
+	// function Box(){};
+	// var box = new Box();
+	// alert(box.prototype);   //undefined  使用对象实例无法访问prototype
+	// alert(box.__proto__);     //[object Object] ,但是可以访问对象prototype的指针__proto__
+	// alert(Box.prototype);     //[object Object]    使用构造函数名(对象名)可以访问prototype
+
+
+
+	//构造函数+原型模式(优点：需要独立的部分放在构造函数里面，需要共享的部分放到原型里面)
+	
+	// function Box(name,age){    //需要独立的部分
+	// 	this.name = name;
+	// 	this.age = age;
+	// 	this.family = ['哥哥','姐姐','妹妹'];
+	// }
+
+	// Box.prototype = {     //需要共享的部分
+	// 	constructor: Box,
+	// 	run : function(){
+	// 		return this.name + this.age + '运行中...';
+	// 	}
+	// }
+
+	// var box1 = new Box('Lee',30);
+	// var box2 = new Box('Jack',50);
+	// alert(box1.family);   //哥哥,姐姐,妹妹
+	// box1.family.push('弟弟');
+	// alert(box1.family);   //哥哥,姐姐,妹妹,弟弟
+	// alert(box2.family);   //哥哥,姐姐,妹妹
+
+	// alert(box1.run());
+	// alert(box2.run());
+
+
+
+
+
+	//动态原型模式(将构造函数和原型函数封装在一起)
+	function Box(name,age){
+		this.name = name;
+		this.age = age;
+		this.family = ['哥哥','姐姐','妹妹'];
+
+		if(typeof this.run != 'function'){    //原型初始化的时候只执行一次
+			Box.prototype.run = function(){
+				return this.name + this.age + '运行中...';
+			}
+		}
+		
+	}
+
+	var box1 = new Box('Lee',25);
+	var box2 = new Box('Jack',30);
+	alert(box1.run());
+	alert(box2.run());
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+
+
+	
+
+
+
+		
+</body>
+</html>

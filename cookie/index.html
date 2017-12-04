@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+	<meta charset="UTF-8">
+	<title>cookie与存储</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<!-- <script type="text/javascript" src="js/base.js"></script>
+	<script type="text/javascript" src="index.js"></script> -->
+</head>
+<body>
+
+	<div id="box"></div>
+
+	<script type="text/javascript">
+
+	//在客户端存储数据
+	//localStorage   没有时间限制的数组存储
+	if(typeof Storage != 'undefined'){
+		localStorage.setItem('name','张一捷');
+		document.getElementById('box').innerHTML = localStorage.getItem('name');
+	}else{
+		document.getElementById('box').innerHTML = '浏览器不支持localStorage';
+	}
+
+
+	//对用户访问页面的次数进行计数
+	if(localStorage.pagecount){
+		localStorage.pagecount = Number(localStorage.pagecount) + 1;
+	}else{
+		localStorage.pagecount = 1;
+	}
+	document.write("Visits: " + localStorage.pagecount + " time(s).");
+	
+
+
+
+
+
+
+
+	</script>
+
+	
+</body>
+</html>

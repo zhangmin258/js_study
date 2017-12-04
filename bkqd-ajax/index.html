@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+	<meta charset="UTF-8">
+	<title>引入ajax</title>
+
+	<link rel="stylesheet" type="text/css" href="index.css">
+
+	<script type="text/javascript" src="js/tool.js"></script>
+
+	<script type="text/javascript" src="js/base.js"></script>
+
+	<!-- 拖拽插件 -->
+	<script type="text/javascript" src="js/base_drag.js"></script>
+
+	<!-- 表单序列化插件 -->
+	<script type="text/javascript" src="js/base_serialize.js"></script>
+
+	<script type="text/javascript" src="index.js"></script>
+
+
+
+</head>
+
+
+<body>
+	
+
+	<div id="header">
+		<div class="logo"><img src="images/logo.gif" alt="新浪微博"></div>
+		<div class="member">个人中心
+			<ul class="member_ul">
+				<li><a href="javascript:;">设置</a></li>
+				<li><a href="javascript:;">换肤</a></li>
+				<li><a href="javascript:;">帮助</a></li>
+				<li><a href="javascript:;">退出</a></li>
+			</ul>
+		</div>
+		<div class="login">登录</div>
+		<p>&nbsp;&nbsp;|&nbsp;&nbsp;</p>
+		<div class="reg">注册</div>
+	</div>
+	
+	
+	<!-- 网站登录框 -->
+	<div id="login">
+		<h2>网站登录<img src="images/close.png" alt="关闭" class="close"></h2>
+		<p class="user">账 号：<input type="text" name="user" class="text"></p>
+		<p class="pass">密 码：<input type="password" name="pass" class="text"></p>
+		<p class="button"><input type="button" class="submit" value=""></p>
+		<p class="other"><a href="javascript:;">注册新用户</a>&nbsp;|&nbsp;<a href="javascript:;">忘记密码</a></p>
+	</div>
+
+
+	<!-- 网站注册框 -->
+	<form action="" id="reg">
+		<h2>会员注册<img src="images/close.png" alt="关闭" class="close"></h2>
+		<dl>
+			<dd>用&nbsp;&nbsp;户&nbsp;&nbsp;名：
+				<input type="text" name="user" class="text">
+				<span class="info info_user">请输入用户名，2~20位，由字母、数字和下划线组成！</span>
+				<span class="error error_user">输入不合法，请重新输入！</span>
+				<span class="success success_user">可用！</span>
+			</dd>
+			<dd>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：
+				<input type="password" name="pass" class="text">
+				<span class="info info_pass">
+					<p>安全级别：<strong class="s s1">■</strong><strong class="s s2">■</strong><strong class="s s3">■</strong>&nbsp;<strong class="s s4" style="font-weight: normal;"></strong></p>
+					<p><span class="q1">○</span>&nbsp;6-20个字符</p>
+					<p><span class="q2">○</span>&nbsp;只能包含大小写字母、数字和非空格字符</p>
+					<p><span class="q3">○</span>&nbsp;大、小写字母、数字、非空字符，2种以上</p>
+				</span>
+				<span class="error error_pass">输入不合法，请重新输入！</span>
+				<span class="success success_pass">可用！</span>
+			</dd>
+			<dd>确认密码：
+				<input type="password" name="notpass" class="text">
+				<span class="info info_notpass">请再一次输入密码！</span>
+				<span class="error error_notpass">密码不一致，请重新输入！</span>
+				<span class="success success_notpass">可用！</span>
+			</dd>
+			<dd>提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问：
+				<select name="question" class="question">
+					<option value="0">请选择</option>
+					<option>您最喜欢吃的菜</option>
+					<option value="2">您的狗狗的名字</option>
+					<option value="3">您的出生地</option>
+					<option value="4">您最喜欢的明星</option>
+				</select>
+				<span class="error error_question">尚未选择提问，请选择！</span>
+			</dd>
+			<dd>回&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：
+				<input type="text" name="answer" class="text">
+				<span class="info info_answer">请输入回答，2-32位！</span>
+				<span class="error error_answer">回答不合法，请重新输入！</span>
+				<span class="success success_answer">可用！</span>
+				<ul class="all_email">
+					<li><span></span>@qq.com</li>
+					<li><span></span>@163.com</li>
+					<li><span></span>@sohu.com</li>
+					<li><span></span>@sina.com.cn</li>
+					<li><span></span>@gmail.com</li>
+				</ul>
+			</dd>
+			<dd>电子邮件：
+				<input type="text" name="email" class="text" autocomplete="off">
+				<span class="info info_email">请输入电子邮件！</span>
+				<span class="error error_email">邮件不合法，请重新输入！</span>
+				<span class="success success_email">可用！</span>
+			</dd>
+			<dd>生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：
+
+				<select name="year" class="year bir">
+					<option value="0">年</option>
+				</select>
+
+				<select name="month" class="month bir">
+					<option value="0">月</option>
+				</select>
+
+				<select name="day" class="day bir">
+					<option value="0">日</option>
+				</select>
+
+				<span class="error error_bir">尚未全部选择，请选择！</span>
+
+			</dd>
+			<dd style="height: 100px"><span style="vertical-align: 85px">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</span>
+				<textarea name="ps"></textarea>
+			</dd>
+			<dd class="sr">还可以输入<strong class="num">200</strong>个字</dd>
+			<dd class="cg">已超过<strong class="num"></strong>字，<span class="clear" style="cursor: pointer; color: #06f;">清尾</span></dd>
+			<dd class="button"><input type="button" class="submit" value="" name="sub"></dd>
+		</dl>
+
+	</form>
+
+	
+	
+	<!-- 遮罩层 -->
+	<div id="screen"></div>
+	
+	
+	<!-- 百度分享侧栏 -->
+	<div id="share">
+		<h2>分享到</h2>
+		<ul>
+			<li><a href="javascript:;" class="a">一键分享</a></li>
+			<li><a href="javascript:;" class="b">新浪微博</a></li>
+			<li><a href="javascript:;" class="c">人人网</a></li>
+			<li><a href="javascript:;" class="d">百度相册</a></li>
+			<li><a href="javascript:;" class="e">腾讯朋友</a></li>
+			<li><a href="javascript:;" class="f">豆瓣网</a></li>
+			<li><a href="javascript:;" class="g">百度新首页</a></li>
+			<li><a href="javascript:;" class="h">和讯微博</a></li>
+			<li><a href="javascript:;" class="i">QQ空间</a></li>
+			<li><a href="javascript:;" class="j">百度收藏</a></li>
+			<li><a href="javascript:;" class="k">腾讯微博</a></li>
+			<li><a href="javascript:;" class="l">开心网</a></li>
+			<li><a href="javascript:;" class="m">百度贴吧</a></li>
+			<li><a href="javascript:;" class="n">搜狐微博</a></li>
+			<li><a href="javascript:;" class="o">QQ好友</a></li>
+			<li><a href="javascript:;" class="p">更多...</a></li>
+		</ul>
+		<div class="share_footer"><a href="javascript:;">百度分享</a><span></span></div>
+	</div>
+	
+	<!-- 导航栏 -->
+	<div id="nav">
+		<ul class="about">
+			<li><a href="http://www.baidu.com"></a></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul class="black">
+			<li>首页</li>
+			<li>博文列表</li>
+			<li>精彩相册</li>
+			<li>动感音乐</li>
+			<li>关于微博</li>
+		</ul>
+		<div class="nav_bg">
+			<ul class="white">
+				<li>首页</li>
+				<li>博文列表</li>
+				<li>精彩相册</li>
+				<li>动感音乐</li>
+				<li>关于微博</li>
+			</ul>
+		</div>
+	</div>
+
+	
+
+	<!-- 菜单切换 -->
+	<div id="main">
+
+		<div id="sideBar">
+
+			<h2>教育博文1</h2>
+			<ul>
+				<li><a href="javascript:;">靠自己95 后女生被16 所国外名校录取</a></li>
+				<li><a href="javascript:;">00 后的成长烦恼：压力巨大成隐形杀手</a></li>
+				<li><a href="javascript:;">一年自学MIT 的33 门课? 疯狂学习方法</a></li>
+				<li><a href="javascript:;">申请赴美读研人数下降5% 7 年来首遇冷</a></li>
+				<li><a href="javascript:;">西政“萌招聘”秀出辣椒与美女被赞</a></li>
+			</ul>
+
+			<h2>教育博文2</h2>
+			<ul>
+				<li><a href="javascript:;">靠自己95 后女生被16 所国外名校录取</a></li>
+				<li><a href="javascript:;">00 后的成长烦恼：压力巨大成隐形杀手</a></li>
+				<li><a href="javascript:;">一年自学MIT 的33 门课? 疯狂学习方法</a></li>
+				<li><a href="javascript:;">申请赴美读研人数下降5% 7 年来首遇冷</a></li>
+				<li><a href="javascript:;">西政“萌招聘”秀出辣椒与美女被赞</a></li>
+			</ul>
+
+			<h2>教育博文3</h2>
+			<ul>
+				<li><a href="javascript:;">靠自己95 后女生被16 所国外名校录取</a></li>
+				<li><a href="javascript:;">00 后的成长烦恼：压力巨大成隐形杀手</a></li>
+				<li><a href="javascript:;">一年自学MIT 的33 门课? 疯狂学习方法</a></li>
+				<li><a href="javascript:;">申请赴美读研人数下降5% 7 年来首遇冷</a></li>
+				<li><a href="javascript:;">西政“萌招聘”秀出辣椒与美女被赞</a></li>
+			</ul>
+
+		</div>
+
+		<div id="index">index</div>
+
+	</div>
+
+
+	<!-- 轮播图 -->
+	<div id="banner">
+		<img src="images/banner1.jpg" alt="轮播图第一张">
+		<img src="images/banner2.jpg" alt="轮播图第二张">
+		<img src="images/banner3.jpg" alt="轮播图第三张">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<span></span>
+		<em></em>
+	</div>
+
+
+	<!-- 延迟加载 -->
+	<div id="photo">
+
+		<dl>
+			<dt><img src="images/wait_load.jpg" bigsrc="images/p1big.jpg" data-src="images/p1.jpg" alt="" class="wait_load"></dt>
+			<dd>延迟加载</dd>
+		</dl>
+		<dl>
+			<dt><img src="images/wait_load.jpg" bigsrc="images/p2big.jpg" data-src="images/p2.jpg" alt="" class="wait_load"></dt>
+			<dd>延迟加载</dd>
+		</dl>
+		<dl>
+			<dt><img src="images/wait_load.jpg" bigsrc="images/p3big.jpg" data-src="images/p3.jpg" alt="" class="wait_load"></dt>
+			<dd>延迟加载</dd>
+		</dl>
+		<dl>
+			<dt><img src="images/wait_load.jpg" bigsrc="images/p4big.jpg" data-src="images/p4.jpg" alt="" class="wait_load"></dt>
+			<dd>延迟加载</dd>
+		</dl>
+		<dl>
+			<dt><img src="images/wait_load.jpg" bigsrc="images/p5big.jpg" data-src="images/p5.jpg" alt="" class="wait_load"></dt>
+			<dd>延迟加载</dd>
+		</dl>
+		<dl>
+			<dt><img src="images/wait_load.jpg" bigsrc="images/p6big.jpg" data-src="images/p6.jpg" alt="" class="wait_load"></dt>
+			<dd>延迟加载</dd>
+		</dl>
+		<dl>
+			<dt><img src="images/wait_load.jpg" bigsrc="images/p7big.jpg" data-src="images/p7.jpg" alt="" class="wait_load"></dt>
+			<dd>延迟加载</dd>
+		</dl>
+		<dl>
+			<dt><img src="images/wait_load.jpg" bigsrc="images/p8big.jpg" data-src="images/p8.jpg" alt="" class="wait_load"></dt>
+			<dd>延迟加载</dd>
+		</dl>
+		<dl>
+			<dt><img src="images/wait_load.jpg" bigsrc="images/p9big.jpg" data-src="images/p9.jpg" alt="" class="wait_load"></dt>
+			<dd>延迟加载</dd>
+		</dl>
+		<dl>
+			<dt><img src="images/wait_load.jpg" bigsrc="images/p10big.jpg" data-src="images/p10.jpg" alt="" class="wait_load"></dt>
+			<dd>延迟加载</dd>
+		</dl>
+		<dl>
+			<dt><img src="images/wait_load.jpg" bigsrc="images/p11big.jpg" data-src="images/p11.jpg" alt="" class="wait_load"></dt>
+			<dd>延迟加载</dd>
+		</dl>
+		<dl>
+			<dt><img src="images/wait_load.jpg" bigsrc="images/p12big.jpg" data-src="images/p12.jpg" alt="" class="wait_load"></dt>
+			<dd>延迟加载</dd>
+		</dl>
+
+	</div>
+
+
+	<!-- 预加载 -->
+	<div id="photo_big">
+		<h2>图片相册<img src="images/close.png" alt="关闭" class="close"></h2>
+		<div class="big">
+			<img src="images/loading.gif" alt="">
+			<strong class="sl">&lt;</strong>
+			<strong class="sr">&gt;</strong>
+			<span class="left"></span>
+			<span class="right"></span>
+			<p class="index"></p>
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+	<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+</body>
+</html>

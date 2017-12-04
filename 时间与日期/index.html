@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时间与日期</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+	
+		<script>
+
+			// alert(Date.parse('05/22/2016'));   //1463846400000  返回时间撮 (月，日，年)
+			// alert(Date.UTC(2016,04,22));   //(年，月，日)1463875200000,同样返回时间撮
+
+			var date = new Date();  //可以把时间撮传进去
+			// alert(date.toLocaleString());   //2017/5/2 下午3:47:31(本地时间)
+			// alert(date.getFullYear());   
+			// alert(date.getMonth()+1);  
+			// alert(date.getDate());   
+			// alert(date.getHours());
+			// alert(date.getMinutes());   
+			// alert(date.getSeconds());      
+			var year = date.getFullYear();
+			var month = date.getMonth() + 1;
+			var day = date.getDate();
+			var hours = date.getHours();
+			var minute = date.getMinutes();
+			var second = date.getSeconds();
+			alert(year+'-'+month+'-'+day+' '+hours+':'+minute+':'+second);
+
+
+
+
+
+		</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>内置对象 </title>
+	
+</head>
+<style type="text/css">
+
+
+
+</style>
+<body>
+	
+	<script>
+
+		
+	//global(全局对象)
+	
+	//对字符串编码
+	var str = '//Min敏';
+	// alert(encodeURI(str));  //  //Min%E6%95%8F  只对中文进行编码
+	// alert(encodeURIComponent(str));  // %2F%2FMin%E6%95%8F   编码更彻底
+
+
+	//对字符串解码
+	var a = encodeURI(str);
+	var b= encodeURIComponent(str);
+
+	// alert(decodeURI(a));   //   //Min敏
+	// alert(decodeURIComponent(b));  //    //Min敏
+
+
+
+	//Math对象
+	
+
+	// alert(Math.E);   //2.718281828459045
+	// alert(Math.PI);    //3.141592653589793   圆周率
+	// alert(Math.min(1,2,3,4,5));  //1
+	// alert(Math.max(1,2,3,4,5));  //5
+
+	//舍入方法
+	//Math.ceil()  向上舍入
+	// alert(Math.ceil(28.3));   //29
+
+	//Math.floor()  向下舍入
+	// alert(Math.floor(28.8));   //28
+
+
+	//Math.round()  四舍五入
+	// alert(Math.round(28.8));   //29
+	// alert(Math.round(28.3));   //28
+
+
+	//Math.random()  0-1之间的随机数，但不包括0和1
+	// alert(Math.random());    //0.4232195198330353
+
+	for(var i=0;i<10;i++){
+		document.write(Math.floor(Math.random()*10+1));
+		document.write('<br>');
+	}
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+
+
+	
+
+
+
+		
+</body>
+</html>

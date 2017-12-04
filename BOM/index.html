@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BOM-浏览器对象模型</title>
+	
+</head>
+<style type="text/css">
+
+
+
+</style>
+<body>
+		<div id="a"></div>
+	<script>
+
+		//window对象
+		//localtion对象
+		//history对象
+
+		// var num = prompt('请输入一个数字',0);
+		// alert(num);
+
+
+		// open('http://www.baidu.com','百度');
+
+
+		//浏览器窗口大小
+		//alert(window.innerWidth);   //1920
+		//alert(window.innerHeight);   //995
+
+		//浏览器窗口加边框大小	
+		//alert(window.outerWidth);   //1920
+		//alert(window.outerHeight);   //1040
+		
+		//跨浏览器获取页面窗口大小
+		// var width = window.innerWidth;
+		// var height = window.innerHeight;
+		// if(typeof width != 'number'){    //兼容IE
+		// 	if(document.compatMode == 'CSSICompat'){    //标准模式下
+		// 		width = document.documentElement.clientWidth;
+		// 		height = document.documentElement.clientHeight;
+		// 	}else{                                      //怪异模式下
+		// 		width = document.body.clientWidth;
+		// 		height = document.body.clientHeight;
+		// 	}
+		// }
+
+		// alert(width);
+		// alert(height);
+
+
+
+
+		//定时器
+
+		// var num = 0;
+		// var max = 5;
+		// var id = null;
+		// function box(){
+		// 	num ++;
+		// 	document.getElementById('a').innerHTML += num;
+		// 	if(num == max){
+		// 		alert('5s到了');
+		// 		clearInterval(id);
+		// 	}
+		// }
+			
+		// id = setInterval(box,1000);
+
+
+
+		alert(window.location.href);
+
+
+
+
+
+
+
+	</script>
+
+
+	
+
+
+
+		
+</body>
+</html>

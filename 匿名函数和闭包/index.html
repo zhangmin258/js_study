@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>匿名函数和闭包</title>
+	
+</head>
+<style type="text/css">
+
+
+
+</style>
+<body>
+	
+	<script>
+
+	//使用匿名函数实现局部变量驻留内存中，从而实现累加
+	// function box(){
+	// 	var age = 0;
+	// 	return function(){
+	// 		age ++ ;
+	// 		return age;
+	// 	}
+	// }
+	// var b = box();
+	// setInterval(function(){
+	// 	document.write(b()+'-');
+	// },1000);
+
+
+
+	//循环里的匿名函数的取值问题
+	// function box(){
+	// 	var arr = [];
+	// 	for(var i=0;i<5;i++){
+	// 		arr[i] = function(){
+	// 			return i;
+	// 		}
+	// 	}
+	// 	return arr;
+	// }
+	
+	// // alert(box()[0]);   
+	// var b = box();
+	// for(var i=0;i<5;i++){
+	// 	alert(b[i]());      //会依次打印出5个5 
+	// }
+
+
+
+	//改0
+	// function box(){
+	// 	var arr = [];
+	// 	for(var i=0;i<5;i++){
+	// 		arr[i] = i;
+	// 	}
+	// 	return arr;
+	// }
+
+	// var b = box();
+	// alert(b);    //0,1,2,3,4
+
+	// for(var i=0;i<5;i++){
+	// 	alert(b[i]);   // 0    // 1   // 2    // 3   // 4
+	// }
+
+
+	//改1 
+	// function box(){
+	// 	var arr = [];
+	// 	for(var i=0;i<5;i++){
+	// 		arr[i] = (function(num){   //通过自我及时执行匿名函数
+	// 			return num;
+	// 		})(i);
+	// 	}
+
+	// 	return arr;
+	// }
+
+	// var b = box();
+	// for(var i=0;i<5;i++){
+	// 	alert(b[i]);     // 0    // 1   // 2    // 3   // 4
+	// }
+
+
+
+	//改2
+	// function box(){
+	// 	var arr = [];
+	// 	for(var i=0;i<5;i++){
+	// 		arr[i] = (function(num){
+	// 			return function(){   //闭包可以将变量驻留在内存中
+	// 				return num;
+	// 			}
+	// 		})(i);
+	// 	}
+	// 	return arr;
+	// }
+
+	// var b = box();
+	// for(var i=0;i<5;i++){
+	// 	alert(b[i]());    // 0    // 1   // 2    // 3   // 4
+	// }
+
+
+	//关于作用域this的指向问题
+	//全局：指向window;
+	//局部：指向该对象；
+	//闭包：指向window;
+	// var use = 'zm';
+	// var box = {
+	// 	use: 'zj',
+	// 	getUse: function(){
+	// 		return function(){
+	// 			return this.use;
+	// 		}
+	// 	}
+	// }
+	// alert(use);  //zm
+	// alert(box.getUse()());   //zm
+
+
+
+
+	//JS没有块级作用域，那么我们需要模仿块级作用域(私有作用域),闭包
+
+	// (function(){
+	// 	//这里便是块级作用域
+	// })();
+
+
+	// function box(){
+	// 	(function(){       //自我执行的函数便是块级作用域，出了这个作用域，便访问不到
+	// 		for(var i=0;i<5;i++){
+	// 			alert(i);
+	// 		}
+	// 	})();
+	// 	alert(i);   //访问不到    i is not defined
+	// } 
+
+	// box();
+
+
+
+	//私有变量，私有方法，外界无法访问，但是可以通过公共接口访问
+	// function Box(){
+	// 	var age = 100;     			//私有变量
+	// 	function run(){           //私有方法
+	// 		return '运行中...';
+	// 	}
+
+	// 	this.publicGo = function(){   //公共接口
+	// 		return age + run();
+	// 	}
+	// }
+
+	// var box = new Box();
+	// alert(box.publicGo());   //100运行中...
+
+
+	//通过构造函数传参来访问私有变量
+	function Box(value){
+		var user = value;     //私有变量
+		this.getUser = function(){    //公共接口
+			return user;
+		}
+	}
+
+	var box = new Box('Lee');
+	alert(box.getUser());   //Lee
+
+	var box = new Box('Jack');
+	alert(box.getUser());   //Jack
+
+
+
+	</script>
+
+
+	
+
+
+
+		
+</body>
+</html>

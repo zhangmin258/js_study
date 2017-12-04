@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+	
+		<p>验证手机号码：<input type="text" value="" placeholder="请输入手机号码" id="iphone"></p>
+
+		<script>
+
+		// var box = new RegExp('abc');
+		// alert(box);   //  /abc/
+
+		// var box = new RegExp('Box','gi');
+		// alert(box);   /Box/gi
+
+
+		// var pattern = /box/i;
+		// var str = 'This is a Box';
+		// alert(pattern.test(str));   //true  匹配成功,返回true
+		// alert(pattern.exec(str));      //Box   匹配成功，返回匹配成功的值,否则返回null
+
+
+		// var pattern = /Box/g;
+		// var str = 'this is a Box,that is a Box';
+		// alert(str.match(pattern));  //Box,Box   全局匹配，返回2个Box
+		// alert(str.search(pattern));   //10      在第10个位置找到Box,如果找不到，则返回-1；
+		// alert(str.replace(pattern,'张敏'));   //this is a 张敏,that is a 张敏    返回被替换后的字符串
+		// alert(str.replace(',','!').split('').join(','));
+
+
+		// var pattern = /google/i;
+		// var str = 'this is a google';
+		// pattern.test(str);     //必须先匹配字符串，静态属性才会生效
+		// alert(RegExp.input);   //this is a google
+		//alert(RegExp.lastMatch);   //google
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		//点字符，匹配除换行符以外的任意字符, 一个点代表一个字符;
+		// var pattern = /g..gle/;
+		// var str = 'google';
+		// alert(pattern.test(str));  //true
+
+		//*，重复匹配字符，可以匹配0个，1个，或者多个
+		// var pattern = /go*gle/;
+		// var str = 'google';
+		// alert(pattern.test(str));  //true
+		
+
+		//+，重复匹配字符，可以匹配 1个，或者多个
+		// var pattern = /go+gle/;
+		// var str = 'ggle';
+		// alert(pattern.test(str));  //false
+
+
+		//?，重复匹配字符，可以匹配 0个，或者1个
+		// var pattern = /go?gle/;
+		// var str = 'google';
+		// alert(pattern.test(str));  //false
+
+
+
+		//{m,n}，区间字符匹配，可以匹配最少m个，最多n个字符
+		// var pattern = /go{2,4}gle/;
+		// var str = 'gooogle';
+		// alert(pattern.test(str));  //true
+
+
+		//{m}，区间字符匹配，表示只能匹配m个字符
+		// var pattern = /go{3}gle/;
+		// var str = 'gooogle';
+		// alert(pattern.test(str));  //true
+
+
+		//{m,}，区间字符匹配，表示匹配m个或m以上个字符
+		// var pattern = /go{3,}gle/;
+		// var str = 'goooooooooooogle';
+		// alert(pattern.test(str));  //true
+
+
+		//[a-z]：26个小写字母任意匹配
+		//[A-Z]：26个大写字母任意匹配
+		//[0-9]：数字0-9任意匹配
+		//[a-zA-Z0-9]：同时匹配小写字母，大写字母，任意的数字
+		//[^A-Z0-9]：匹配任意不在[]里面的字符
+		// var pattern = /[^a-z0-9]oogle/;
+		// var str = '3oogle';
+		// alert(pattern.test(str));  //false
+
+
+		//^行首匹配  $行尾匹配
+		// var pattern = /^[0-9]oogle$/;
+		// var str = '4oogle';
+		// alert(pattern.test(str));   //true
+ 
+
+		//\w 匹配字母、数字、下划线
+		// var pattern = /^\woogle/;
+		// var str = '_oogle';
+		// alert(pattern.test(str));   //true
+
+		//\W 匹配非字母、数字、下划线
+		// var pattern = /^\Woogle/;
+		// var str = '@oogle';
+		// alert(pattern.test(str));   //true
+
+		//\d 匹配数字
+		// var pattern = /^\doogle/;
+		// var str = '2oogle';
+		// alert(pattern.test(str));   //true
+
+
+		//\D 匹配非数字
+		// var pattern = /^\Doogle$/;
+		// var str = 'Aoogle';
+		// alert(pattern.test(str));   //true
+
+
+		// //\s  匹配空格，空白字符
+		// var pattern = /^goo\sgle$/;
+		// var str = 'goo gle';
+		// alert(pattern.test(str));   //true
+
+
+		//\b  匹配字符是否到达边界
+		// var pattern = /^google\b$/;
+		// var str = 'google';
+		// alert(pattern.test(str));   //true
+
+
+		//|  匹配‘或’选择模式
+		// var pattern = /^google|baidu|sougou$/;
+		// var str = 'baidu';
+		// alert(pattern.test(str));   //true
+
+
+		//使用分组模式匹配
+		// var pattern = /^(google){4,8}$/;
+		// var str = 'googlegooglegooglegooglegoogle';
+		// alert(pattern.test(str));   //true
+
+		// var pattern = /8(.*)8/;
+		// var str = 'my name is 8baidu1238';
+		// document.write(str.replace(pattern,'<strong>$1</strong>'));   //baidu123
+
+
+
+		// var pattern = /(.*)\s(.*)/;  //第一个分组代表$1,第二个分组代表$2
+		// var str = 'google baidu';
+		// alert(str.replace(pattern,'$2,$1'));   //baidu,google
+ 
+
+		//使用贪婪模式
+		// var pattern = /[a-z]+/;
+		// var str = 'abcdefg';
+		// alert(str.replace(pattern,1));  //1
+
+
+		//使用堕落模式
+		// var pattern = /[a-z]+?/;
+		// var str = 'abcdefg';
+		// alert(str.replace(pattern,1));  //1bcdefg
+
+		// var str = 'google 2017';
+		// var pattern = /^[a-z]+\s[0-9]{4}$/;
+		// alert(pattern.exec(str));  //返回一个包含字符串的数组
+
+
+		//邮政编码的验证
+		// var str = '437000';
+		// var pattern = /^[1-9][0-9]{5}$/;
+		// alert(pattern.test(str));
+	
+
+		//手机号码验证	
+		$(function(){
+			$('#iphone').bind('blur',function(){
+				checkIphone($(this).val());
+			});
+		});
+
+
+		function checkIphone(str){
+			var pattern = /^1[3|5|8]{1}[0-9]{9}$/;
+			if(pattern.test(str) == true){
+				alert('正确');
+			}else{
+				alert('错误');
+			}
+		}
+		
+
+		//文件名压缩包验证
+		// var pattern = /^[\w]+\.[a-z]{2,4}$/;
+		// var str = 'zm_zm.zip';
+		// alert(pattern.test(str));
+
+		//删除空格验证
+		// var pattern = /\s/g;
+		// var str = '111 222 333';
+		// alert(str.replace(pattern,''));
+
+		//删除一个字符串的前后空格
+		var pattern = /^\s+(.+?)\s+$/;   //采用惰性模式
+		var str= ' goo gle ';
+		var result = pattern.exec(str)[1];
+		alert('|'+result+'|');
+
+
+
+		</script>
+</body>
+</html>
